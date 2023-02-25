@@ -13,7 +13,11 @@ public class playerMovement : MonoBehaviour
 
     public bool grounded;
 
-
+    private SpriteRenderer spriteRenderer;
+    public Sprite catCarSprite;
+    public Sprite catCarLeftSprite;
+    public Sprite catCarRightSprite;
+    private int catCarSpriteValue = 0;
     public void OnMove(InputAction.CallbackContext context)
 
     {
@@ -89,12 +93,30 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         Look();
+
+        //changes car sprite if turning
+        if (Input.GetAxisRaw("Horizontal") < 0 && catCarSpriteValue >= 0) {
+            ChangeSprite(catCarLeftSprite);
+            catCarSpriteValue = -1;
+        } else if(Input.GetAxisRaw("Horizontal") > 0 && catCarSpriteValue <= 0) {
+            ChangeSprite(catCarRightSprite);
+            catCarSpriteValue = 1;
+        } else if(Input.GetAxisRaw("Horizontal") == 0 && catCarSpriteValue != 0) {
+            ChangeSprite(catCarSprite);
+            catCarSpriteValue = 0;
+        }       
+    }
+
+    //changes car sprite
+    void ChangeSprite(Sprite newSprite) {
+        spriteRenderer.sprite = newSprite;
     }
 
     public void SetGrounded(bool state)
