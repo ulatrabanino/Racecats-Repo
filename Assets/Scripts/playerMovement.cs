@@ -7,11 +7,16 @@ public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject camHolder;
-    public float speed, sensitivity,maxForce, jumpForce;
-    private Vector2 move,look;
+    public float speed, sensitivity,maxForce, jumpForce ,boostspeed;
+    private Vector2 move,look,move2;
     private float lookRotation;
 
+    //used to smooth the speed transition of object
+    private float smoothSpeed;  
     public bool grounded;
+
+    //min values and max for rotating camera
+    [SerializeField] private Vector3 minValue, maxValue;
 
     private SpriteRenderer spriteRenderer;
     public Sprite catCarSprite;
@@ -33,59 +38,63 @@ public class playerMovement : MonoBehaviour
     
     }
 
-     public void OnJump(InputAction.CallbackContext context)
-
-    {
-        Jump();
-    
-    }
+  
 
 
     private void FixedUpdate()
     {
         Move();
-      
+     
     }
 
-    void Jump()
-    {
-        Vector3 jumpForces = Vector3.zero;
-
-        if(grounded)
-        {
-            jumpForces  = Vector3.up * jumpForce;
-        }
-        rb.AddForce(jumpForces, ForceMode.VelocityChange);
-
-    }
+   
 
     void Move()
     {
+        
         Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.x,0, move.y);
-        targetVelocity *= speed;
+        Vector3 targetVelocity = new Vector3(move.normalized.x*smoothSpeed,rb.velocity.y, move.normalized.y*smoothSpeed);
+
+
+        if(targetVelocity.magnitude >0){
+            smoothSpeed = Mathf.Lerp(smoothSpeed,boostspeed,Time.deltaTime);
+
+        }else
+        {
+            smoothSpeed = Mathf.Lerp(smoothSpeed,0,Time.deltaTime);
+        }
+        //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            //shift key pressed = boostspeed for increase
+            targetVelocity*=boostspeed;
+        }
+        else
+        {   //otherwise normal speed incerase when holding w 
+            targetVelocity *= speed;
+        }       
 
         //align direction
         targetVelocity = transform.TransformDirection(targetVelocity);
 
         //Calculate forces
         Vector3 velocityChange = (targetVelocity-currentVelocity);
-        velocityChange = new Vector3(velocityChange.x,0,velocityChange.z); //fixes falling so u can fall 
+        velocityChange = new Vector3(velocityChange.normalized.x,0,velocityChange.normalized.z); //fixes falling so u can fall 
 
         //limit force
-
         Vector3.ClampMagnitude(velocityChange, maxForce);
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
 
     }
 
+  
     void Look()
     {
         //turn camera rotation
         transform.Rotate(Vector3.up*look.x * sensitivity);
         //look around
         lookRotation +=(-look.y*sensitivity);
-        lookRotation = Mathf.Clamp(lookRotation,-90,90);//clamps look rotation so it wont have weird looking angles
+        lookRotation = Mathf.Clamp(lookRotation,minValue.y,maxValue.z);//clamps look rotation so it wont have weird looking angles
         camHolder.transform.eulerAngles = new Vector3(lookRotation,camHolder.transform.eulerAngles.y, camHolder.transform.eulerAngles.z);
     }
 
@@ -94,6 +103,8 @@ public class playerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -119,6 +130,7 @@ public class playerMovement : MonoBehaviour
         spriteRenderer.sprite = newSprite;
     }
 
+    //checks to see if your on the ground 
     public void SetGrounded(bool state)
     {
         grounded = state;
