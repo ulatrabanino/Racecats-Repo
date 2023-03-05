@@ -243,6 +243,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452340957997258488, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 473090703}
+    - target: {fileID: 4452340957997258488, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: db307c89f9db4d9429268ce9e2589391, type: 2}
@@ -349,9 +353,10 @@ GameObject:
   - component: {fileID: 473090705}
   - component: {fileID: 473090708}
   - component: {fileID: 473090709}
+  - component: {fileID: 473090710}
   m_Layer: 5
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: MaintenanceCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,19 +431,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704cfc8a7adf9ae45947f123fa3e5c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &473090709
-BoxCollider:
+  woodBlockSprite: {fileID: 21300000, guid: 579673a604954e64eaa61162655e51a2, type: 3}
+--- !u!61 &473090709
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473090703}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 95.5, y: 73.61}
+  m_EdgeRadius: 0
+--- !u!50 &473090710
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473090703}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!224 &558776108 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 525658397135652725, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
@@ -915,6 +955,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452340957997258488, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 473090703}
+    - target: {fileID: 4452340957997258488, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 88ffc134c8c3ecb428be2ab70c07cf91, type: 2}
@@ -924,24 +968,6 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 8600f245bd7c34048a9fe7725a5a5005, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
---- !u!1 &1683959587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8301904494028636037, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
-  m_PrefabInstance: {fileID: 525658396611246169}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1683959589
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683959587}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2131810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,9 +1192,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452340957997258488, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
-      propertyPath: item
+      propertyPath: car
       value: 
-      objectReference: {fileID: 11400000, guid: d47739b45238cd6428f8ef6ec679cb71, type: 2}
+      objectReference: {fileID: 473090703}
     - target: {fileID: 4902409329198650427, guid: d3f7f7edeb76d504992c211744d4213b, type: 3}
       propertyPath: m_Sprite
       value: 

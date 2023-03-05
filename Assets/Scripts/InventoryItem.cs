@@ -13,6 +13,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public Item item;
     [HideInInspector] public Transform parentAfterDrag;
+
+    public GameObject car;
     public void InitializeItem(Item newItem) {
         item = newItem;
         image.sprite = newItem.image;
@@ -28,7 +30,22 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.position = Input.mousePosition;
     }
 
+    //checks for collision with car on item drop
     public void OnEndDrag(PointerEventData eventData) {
+        print(transform.position);
+        bool destroy = false;
+        foreach (var hit in Physics2D.OverlapCircleAll(transform.position, 90)) {
+            if (hit.CompareTag("MaintenanceCar")) {
+                destroy = car.GetComponent<Maintenance>().checkDraggedObject(gameObject);
+                break;
+            }
+        }
+
+        if (destroy) {
+            //image.raycastTarget = false;
+            Destroy(gameObject);
+            return;
+        }
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
     }

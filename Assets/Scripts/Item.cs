@@ -8,6 +8,8 @@ public class Item : ScriptableObject {
 
     [Header("ImageSprite")]
     public Sprite image;
+
+    //identifies what each item is
     public enum ItemType {
          CarJack,
          Tire,
