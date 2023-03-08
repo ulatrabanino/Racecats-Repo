@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Maintenance : MonoBehaviour
 {
@@ -31,17 +32,19 @@ public class Maintenance : MonoBehaviour
         
         if(index < itemOrder.Length && itemType == itemOrder[index]) {
             switch(itemType) {
+
+                //positions wood block behind rear wheel
                 case Item.ItemType.WoodBlock:
-                    GameObject newSprite = new GameObject("Wood Block");
+                    obj.transform.position = new Vector3(560f, 285.5f, 0);
+                    //gameObject.GetComponent<UnityEngine.UI.Image>().sprite = woodBlockSprite;
+                    //NEED TO POSITION BLOCK BASED ON CAR POSITION
+                    break;
 
-                    //Attach a SpriteRenender to the newly created gameobject
-                    SpriteRenderer rend = newSprite.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-
-                    //Assign the sprite to the SpriteRenender
-                    rend.sprite = woodBlockSprite;
-                    newSprite.layer = LayerMask.NameToLayer("UI");
-                    newSprite.transform.localScale = new Vector3(10, 10, 10);
-                    newSprite.transform.position = new Vector2(1955, 1360.5f);
+                //positions car jack under car frame and raises car
+                case Item.ItemType.CarJack:
+                    obj.transform.position = new Vector3(1095, 383, 0);
+                    transform.Rotate(0, 0, 3);
+                    transform.SetAsLastSibling();
                     break;
             }
             index++;

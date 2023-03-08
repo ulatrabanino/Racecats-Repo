@@ -42,8 +42,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         if (destroy) {
-            //image.raycastTarget = false;
-            Destroy(gameObject);
+            image.raycastTarget = false;
+            //Destroy(gameObject);
             return;
         }
         image.raycastTarget = true;
