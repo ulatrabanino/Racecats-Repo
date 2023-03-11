@@ -32,20 +32,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     //checks for collision with car on item drop
     public void OnEndDrag(PointerEventData eventData) {
-        print(transform.position);
         bool destroy = false;
         foreach (var hit in Physics2D.OverlapCircleAll(transform.position, 90)) {
             if (hit.CompareTag("MaintenanceCar")) {
-                destroy = car.GetComponent<Maintenance>().checkDraggedObject(gameObject);
+                destroy = car.GetComponent<Maintenance>().CheckDraggedObject(gameObject);
                 break;
             }
         }
 
+        //destroy object if no longer needed
         if (destroy) {
-            image.raycastTarget = false;
-            //Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
+
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
     }
