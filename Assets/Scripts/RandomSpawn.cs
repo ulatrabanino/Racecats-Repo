@@ -27,7 +27,7 @@ public class RandomSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void SpawnObject() {
@@ -35,13 +35,5 @@ public class RandomSpawn : MonoBehaviour
         Vector3 objectPosition = new Vector3(Random.Range(terrainMinValueX, terrainMaxValueX), terrianValueY, Random.Range(terrainMinValueZ, terrainMaxValueZ));
         var obj = Instantiate(spawn, objectPosition, Quaternion.identity, spawn.transform.parent.gameObject.transform);
         obj.transform.localPosition = objectPosition;
-            
-        //if object is on road, assign new position
-        while(obj.GetComponent<Spawn>().IsOverlapping()) {
-            objectPosition = new Vector3(Random.Range(terrainMinValueX, terrainMaxValueX), terrianValueY, Random.Range(terrainMinValueZ, terrainMaxValueZ));
-            obj.transform.localPosition = objectPosition;
-         }
-            
-         //spawns.Add(obj);
     }
 }
