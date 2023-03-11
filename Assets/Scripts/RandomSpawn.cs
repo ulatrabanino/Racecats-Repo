@@ -8,13 +8,14 @@ using UnityEngine;
 public class RandomSpawn : MonoBehaviour
 {
     public GameObject spawn;
-    //private List<GameObject> spawns = new List<GameObject>();
-    private int spawnNum = 50;
-    private float terrainMinValueX = -275f;
-    private float terrainMaxValueX = 281f;
-    private float terrianValueY = -5.41f;
-    private float terrainMinValueZ = -172f;
-    private float terrainMaxValueZ = 287f;
+    private int spawnNum = 20;
+
+    [HideInInspector]
+    public float terrainMinValueX = -198f;
+    public float terrainMaxValueX = 216f;
+    public float terrainValueY = -5.41f;
+    public float terrainMinValueZ = -70f;
+    public float terrainMaxValueZ = 219f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,9 @@ public class RandomSpawn : MonoBehaviour
 
     }
 
+    //creates and spawns new object
     private void SpawnObject() {
-        //creates and spawns new object
-        Vector3 objectPosition = new Vector3(Random.Range(terrainMinValueX, terrainMaxValueX), terrianValueY, Random.Range(terrainMinValueZ, terrainMaxValueZ));
+        Vector3 objectPosition = new Vector3(Random.Range(terrainMinValueX, terrainMaxValueX), terrainValueY, Random.Range(terrainMinValueZ, terrainMaxValueZ));
         var obj = Instantiate(spawn, objectPosition, Quaternion.identity, spawn.transform.parent.gameObject.transform);
         obj.transform.localPosition = objectPosition;
     }
