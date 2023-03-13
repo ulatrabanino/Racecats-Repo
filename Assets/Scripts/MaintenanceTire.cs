@@ -1,12 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
-using UnityEngine.UIElements;
-using UnityEngine.UI;
 
-public class Maintenance : MonoBehaviour
+public class MaintenanceTire : MonoBehaviour
 {
     private Item.ItemType[] itemOrder;
     private int index;

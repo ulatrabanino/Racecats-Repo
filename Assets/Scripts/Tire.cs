@@ -11,7 +11,7 @@ public class Tire : MonoBehaviour, IPointerDownHandler {
 
     //removes hubcap and tire on click
     public void OnPointerDown(PointerEventData eventData) {
-        if(car.GetComponent<Maintenance>().GetIndex() == 2) {
+        if(car.GetComponent<MaintenanceTire>().GetIndex() == 2) {
             if (gameObject.GetComponent<Image>().sprite.name == "tireDamagedNoHubcap") {
                 gameObject.SetActive(false);
             }

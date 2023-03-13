@@ -11,9 +11,14 @@ public class Item : ScriptableObject {
 
     //identifies what each item is
     public enum ItemType {
-         CarJack,
-         Hubcap,
-         Tire,
-         WoodBlock
+        Cap,    
+        CarJack,
+        Filter,
+        Funnel,
+        Hubcap,
+        Oil,
+        Plug,
+        Tire,
+        WoodBlock
     }
 }
