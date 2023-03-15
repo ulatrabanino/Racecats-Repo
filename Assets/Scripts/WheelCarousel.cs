@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopCarousel : MonoBehaviour {
-    private int spriteNum = 4;
+public class WheelCarousel : MonoBehaviour {
+    private int spriteNum = 3;
     public Image image;
     public int i = 0;
-    public Sprite[] sprites = new Sprite[4];
+    public Sprite[] sprites = new Sprite[3];
 
     void Start() {
         image.sprite = sprites[0];
