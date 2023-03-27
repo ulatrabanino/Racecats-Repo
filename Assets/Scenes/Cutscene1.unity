@@ -577,7 +577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &420413407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -807,6 +807,7 @@ MonoBehaviour:
   - They need more funds.. Maybe I should enter a race!
   - Surely winning will help fund the shelter.
   typingSpeed: 0.06
+  continueButton: {fileID: 420413406}
 --- !u!1 &899772867
 GameObject:
   m_ObjectHideFlags: 0
