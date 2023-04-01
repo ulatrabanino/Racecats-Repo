@@ -9,8 +9,12 @@ public class StateController : MonoBehaviour
     public static string wheelColor;
     public static int money;
 
-    public bool[] carsUnlocked = new bool[3];
-    public bool[] wheelsUnlocked = new bool[3];
+    public static bool[] carsUnlocked = new bool[3] { true, false, false };
+    public static bool[] wheelsUnlocked = new bool[3] { true, false, false };
+    public static string[] cars = new string[3] { "RedCarNoWheels", "", "" };
+    public static string[] wheels = new string[3] { "BlackWheel", "", "" };
+    public static int ownedCarsNum = 1;
+    public static int ownedWheelsNum = 1;
 
     void Start() {
         carSprite = Resources.Load("RedCarBlackWheels", typeof(Sprite)) as Sprite;
