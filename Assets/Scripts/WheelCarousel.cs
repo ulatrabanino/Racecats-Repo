@@ -4,26 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WheelCarousel : MonoBehaviour {
-    private int spriteNum = 3;
     public Image image;
     public int i = 0;
-    public Sprite[] sprites = new Sprite[3];
 
     void Start() {
-        image.sprite = sprites[0];
+        image.sprite = Resources.Load(StateController.wheels[0], typeof(Sprite)) as Sprite;
     }
     
     public void ImageChangeLeft() {
         if ((i - 1) < 0) {
-            i = spriteNum;
+            i = StateController.ownedWheelsNum;
         }
-        image.sprite = sprites[--i];
+        image.sprite = Resources.Load(StateController.wheels[--i], typeof(Sprite)) as Sprite;
     }
     public void ImageChangeRight() {
-        if ((i + 1) >= spriteNum) {
+        if ((i + 1) >= StateController.ownedWheelsNum) {
             i = -1;
         }
-        image.sprite = sprites[++i];
+        image.sprite = Resources.Load(StateController.wheels[++i], typeof(Sprite)) as Sprite;
     }
 
     public void SelectWheel(GameObject wheelImage) {
@@ -35,3 +33,4 @@ public class WheelCarousel : MonoBehaviour {
         StateController.carSprite = Resources.Load(string.Format("{0}Car{1}Wheels", StateController.carColor, StateController.wheelColor), typeof(Sprite)) as Sprite;
     }
 }
+
