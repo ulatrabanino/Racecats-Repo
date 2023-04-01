@@ -25,4 +25,12 @@ public class CarCarousel : MonoBehaviour {
         }
         image.sprite = sprites[++i];
     }
+
+    public void SelectCar(GameObject carImage) {
+        Image i = carImage.GetComponent<Image>();
+        string color = i.sprite.name.Split("Car")[0];
+
+        StateController.carColor = color;
+        StateController.carSprite = Resources.Load(string.Format("{0}Car{1}Wheels", StateController.carColor, StateController.wheelColor), typeof(Sprite)) as Sprite;
+    }
 }

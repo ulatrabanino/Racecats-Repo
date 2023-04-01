@@ -94,6 +94,7 @@ public class playerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        catCarSprite = StateController.carSprite;
     }
 
     // Update is called once per frame
