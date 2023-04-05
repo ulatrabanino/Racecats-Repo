@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject camHolder;
-    public float speed, sensitivity,maxForce, jumpForce ,boostspeed;
+    public float speed, sensitivity,maxForce ,boostspeed;
     private Vector2 move,look,move2;
     private float lookRotation;
 
@@ -64,7 +64,7 @@ public class playerMovement : MonoBehaviour
             smoothSpeed = Mathf.Lerp(smoothSpeed,0,Time.deltaTime);
         }
         //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.Space))
         {
             //shift key pressed = boostspeed for increase
             targetVelocity*=boostspeed;
