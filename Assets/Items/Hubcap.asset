@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a018465c43969bc4e9f8f5c911ffffc3, type: 3}
-  m_Name: Car Jack
+  m_Name: Hubcap
   m_EditorClassIdentifier: 
-  type: 1
-  image: {fileID: 21300000, guid: 72ce02ea2babad249a54cfa5e40c5080, type: 3}
+  type: 4
+  image: {fileID: 21300000, guid: a788dc063ff4a634885c2677ec950640, type: 3}

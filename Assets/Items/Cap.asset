@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a018465c43969bc4e9f8f5c911ffffc3, type: 3}
-  m_Name: Car Jack
+  m_Name: Cap
   m_EditorClassIdentifier: 
-  type: 1
-  image: {fileID: 21300000, guid: 72ce02ea2babad249a54cfa5e40c5080, type: 3}
+  type: 0
+  image: {fileID: 21300000, guid: 695d018521191614ea3a718260d08a7d, type: 3}
