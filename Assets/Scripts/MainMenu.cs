@@ -5,8 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    //tracks music
+    AudioManager manager;
+    public void Start() {
+        manager = FindObjectOfType<AudioManager>();
+        manager.Play("MainMenuBGM");
+    }
     public void PlayGame() {
-        SceneManager.LoadScene("stuff");
+        SceneManager.LoadScene("Racetrack");
+    }
+
+    public void PlayMenuSFX() {
+        manager.Play("MainMenuHoverSFX");
     }
 
     public void QuitGame() {
