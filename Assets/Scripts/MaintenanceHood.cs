@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
+
+    //tracks music
+    AudioManager manager;
+
     private Item.ItemType[] itemOrder;
     private int index;
 
@@ -17,6 +21,8 @@ public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
         //keeps track of which item needs to be dragged to car
         itemOrder = new[] { Item.ItemType.Funnel, Item.ItemType.Oil, Item.ItemType.Cap };
         index = 0;
+
+        manager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -59,6 +65,8 @@ public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
                 case Item.ItemType.Cap:
                     if (gameObject.GetComponent<UnityEngine.UI.Image>().sprite.name == "carHoodNoCap") {
                         gameObject.GetComponent<UnityEngine.UI.Image>().sprite = carHood;
+
+                        manager.Play("MaintenanceCompleteSFX");
                     }
                     else {
                         return false;

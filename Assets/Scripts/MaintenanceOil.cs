@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class MaintenanceOil : MonoBehaviour, IPointerDownHandler {
 
+    //tracks music
+    AudioManager manager;
+
     private int index;
 
     public GameObject carUndersideCanvas;
@@ -13,6 +16,9 @@ public class MaintenanceOil : MonoBehaviour, IPointerDownHandler {
     // Start is called before the first frame update
     void Start() {
         index = 0;
+
+        manager = FindObjectOfType<AudioManager>();
+        manager.Play("MaintenanceBGM");
     }
 
     // Update is called once per frame

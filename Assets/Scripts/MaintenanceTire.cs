@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MaintenanceTire : MonoBehaviour
 {
+    //tracks music
+    AudioManager manager;
+
     private Item.ItemType[] itemOrder;
     private int index;
     public GameObject tire;
@@ -14,6 +17,9 @@ public class MaintenanceTire : MonoBehaviour
         //keeps track of which item needs to be dragged to car
         itemOrder = new[] { Item.ItemType.WoodBlock, Item.ItemType.CarJack, Item.ItemType.Tire, Item.ItemType.Hubcap };
         index = 0;
+
+        manager = FindObjectOfType<AudioManager>();
+        manager.Play("MaintenanceBGM");
     }
 
     // Update is called once per frame
@@ -60,6 +66,8 @@ public class MaintenanceTire : MonoBehaviour
                 case Item.ItemType.Hubcap:
                     if(tire.GetComponent<UnityEngine.UI.Image>().sprite.name == "tireNoHubcap") {
                         tire.GetComponent<Tire>().AttachHubcap();
+
+                        manager.Play("MaintenanceCompleteSFX");
                     } else {
                         return false;
                     }

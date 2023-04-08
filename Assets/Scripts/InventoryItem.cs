@@ -2,8 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-{
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler {
+
+    //tracks music
+    AudioManager manager;
+
     [Header("UI")]
     public Image image;
 
@@ -11,6 +14,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform parentAfterDrag;
 
     public GameObject car;
+
+    public void Start() {
+        manager = FindObjectOfType<AudioManager>();
+    }
+
     public void InitializeItem(Item newItem) {
         item = newItem;
         image.sprite = newItem.image;
@@ -58,5 +66,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
+    }
+    
+    //plays hover sfx and highlights item
+    public void OnPointerEnter(PointerEventData eventData) {
+        var tempColor = image.color;
+        tempColor.a = 0.835f;
+        image.color = tempColor;
+
+        manager.Play("ItemHoverSFX");
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        var tempColor = image.color;
+        tempColor.a = 1f;
+        image.color = tempColor;
     }
 }
