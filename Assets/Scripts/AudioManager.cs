@@ -6,9 +6,10 @@ public class AudioManager : MonoBehaviour
 {
     //keeps track of sounds
     public Sound[] sounds;
-    public static AudioManager instance;
+    //public static AudioManager instance;
     void Awake()
     {
+        /*
         //do not restart music if instance exists
         if(instance == null) {
             instance = this;
@@ -17,7 +18,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);*/
 
         //assign attributes for each sound clip in array
         foreach(Sound s in sounds) {
