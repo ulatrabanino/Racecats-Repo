@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StateController : MonoBehaviour
 {
-    public static Sprite carSprite;
-    public static string carColor;
-    public static string wheelColor;
-    public static int money;
+    public static Sprite carSprite = Resources.Load("RedCarBlackWheels", typeof(Sprite)) as Sprite;
+    public static string carColor = "Red";
+    public static string wheelColor = "Black";
+    public static int money = 0;
 
     public static bool[] carsUnlocked = new bool[3] { true, false, false };
     public static bool[] wheelsUnlocked = new bool[3] { true, false, false };
@@ -16,8 +16,5 @@ public class StateController : MonoBehaviour
     public static int ownedCarsNum = 1;
     public static int ownedWheelsNum = 1;
 
-    void Start() {
-        carSprite = Resources.Load("RedCarBlackWheels", typeof(Sprite)) as Sprite;
-        money = 0;
-    }
+    public static bool[] shopItemsBought = new bool[4] { false, false, false, false };
 }

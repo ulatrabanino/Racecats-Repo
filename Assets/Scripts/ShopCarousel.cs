@@ -16,12 +16,14 @@ public class ShopCarousel : MonoBehaviour {
     public GameObject buyButton;
 
     private int[] prices = new int[4] { 200, 200, 100, 100 };
-    private bool[] bought = new bool[4] { false, false, false, false };
 
     void Start() {
         image.sprite = sprites[i];
         costText = costObject.GetComponent<TMP_Text>();
         costText.text = string.Format("Cost: ${0}", prices[i]);
+
+        buyButton.SetActive(!StateController.shopItemsBought[i]);
+        costObject.SetActive(!StateController.shopItemsBought[i]);
     }
     
     public void ImageChangeLeft() {
@@ -31,8 +33,8 @@ public class ShopCarousel : MonoBehaviour {
         image.sprite = sprites[--i];
         costText.text = string.Format("Cost: ${0}", prices[i]);
         
-        buyButton.SetActive(!bought[i]);
-        costObject.SetActive(!bought[i]);
+        buyButton.SetActive(!StateController.shopItemsBought[i]);
+        costObject.SetActive(!StateController.shopItemsBought[i]);
     }
     public void ImageChangeRight() {
         if ((i + 1) >= spriteNum) {
@@ -41,8 +43,8 @@ public class ShopCarousel : MonoBehaviour {
         image.sprite = sprites[++i];
         costText.text = string.Format("Cost: ${0}", prices[i]);
 
-        buyButton.SetActive(!bought[i]);
-        costObject.SetActive(!bought[i]);
+        buyButton.SetActive(!StateController.shopItemsBought[i]);
+        costObject.SetActive(!StateController.shopItemsBought[i]);
     }
 
     public void buy() {
@@ -95,11 +97,11 @@ public class ShopCarousel : MonoBehaviour {
                 Debug.Log("Out of range in shop carousel");
                 break;
         }
-        bought[i] = true;
+        StateController.shopItemsBought[i] = true;
         StateController.money -= prices[i];
 
-        buyButton.SetActive(!bought[i]);
-        costObject.SetActive(!bought[i]);
+        buyButton.SetActive(!StateController.shopItemsBought[i]);
+        costObject.SetActive(!StateController.shopItemsBought[i]);
     }
 }
 

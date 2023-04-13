@@ -7,12 +7,16 @@ public class MainMenu : MonoBehaviour
 {
     //tracks music
     AudioManager manager;
-    public void Start() {
+    void Start() {
         manager = FindObjectOfType<AudioManager>();
         manager.Play("MainMenuBGM");
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
+
     public void PlayGame() {
-        SceneManager.LoadScene("Racetrack");
+        SceneManager.LoadSceneAsync("Racetrack", LoadSceneMode.Single);
     }
 
     public void PlayMenuSFX() {
