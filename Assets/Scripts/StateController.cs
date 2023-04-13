@@ -16,6 +16,5 @@ public class StateController : MonoBehaviour
     public static int ownedCarsNum = 1;
     public static int ownedWheelsNum = 1;
 
-    void Start() {
-    }
+    public static bool[] shopItemsBought = new bool[4] { false, false, false, false };
 }
