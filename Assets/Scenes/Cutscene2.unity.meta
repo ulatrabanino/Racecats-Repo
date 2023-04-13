@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b825ce1fa984d6a4fb619096e6db9872
+<<<<<<< HEAD:Assets/Scenes/Cutscene2.unity.meta
+guid: 756d69c9852733d419806eb64c37897e
+=======
+guid: 7fae893e17f08684bbacb48f37b9e828
+>>>>>>> main:Assets/Scenes/Menu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
+    AudioManager manager;
     public Rigidbody rb;
     public GameObject camHolder;
-    public float speed, sensitivity,maxForce, jumpForce ,boostspeed;
+    public float speed, sensitivity, maxForce, boostspeed;
     private Vector2 move,look,move2;
     private float lookRotation;
 
@@ -27,6 +29,7 @@ public class playerMovement : MonoBehaviour
 
     {
         move =context.ReadValue<Vector2>();
+        //manager.Play("CarDrive");
     
     }
 
@@ -64,7 +67,7 @@ public class playerMovement : MonoBehaviour
             smoothSpeed = Mathf.Lerp(smoothSpeed,0,Time.deltaTime);
         }
         //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.Space))
         {
             //shift key pressed = boostspeed for increase
             targetVelocity*=boostspeed;
@@ -105,6 +108,8 @@ public class playerMovement : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         rb = GetComponent<Rigidbody>();
+        manager = FindObjectOfType<AudioManager>();
+        manager.Play("RacetrackBGM");
     }
 
     // Update is called once per frame
@@ -122,7 +127,7 @@ public class playerMovement : MonoBehaviour
         } else if(Input.GetAxisRaw("Horizontal") == 0 && catCarSpriteValue != 0) {
             ChangeSprite(catCarSprite);
             catCarSpriteValue = 0;
-        }       
+        }
     }
 
     //changes car sprite
