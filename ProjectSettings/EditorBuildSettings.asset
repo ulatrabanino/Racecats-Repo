@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Racetrack.unity
     guid: 272ad09f1aa63414daf9f821bd6a7896
+  - enabled: 1
+    path: Assets/Scenes/Racetrack 1.unity
+    guid: fc1731c83fe866144bd4ed983d51102d
   m_configObjects: {}

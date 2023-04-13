@@ -5,8 +5,8 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     public static Sprite carSprite = Resources.Load("RedCarBlackWheels", typeof(Sprite)) as Sprite;
-    public static string carColor;
-    public static string wheelColor;
+    public static string carColor = "Red";
+    public static string wheelColor = "Black";
     public static int money = 0;
 
     public static bool[] carsUnlocked = new bool[3] { true, false, false };

@@ -27,7 +27,6 @@ public class WheelCarousel : MonoBehaviour {
     public void SelectWheel(GameObject wheelImage) {
         Image i = wheelImage.GetComponent<Image>();
         string color = i.sprite.name.Split("Wheel")[0];
-        Debug.Log(color);
 
         StateController.wheelColor = color;
         StateController.carSprite = Resources.Load(string.Format("{0}Car{1}Wheels", StateController.carColor, StateController.wheelColor), typeof(Sprite)) as Sprite;

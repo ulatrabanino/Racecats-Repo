@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,18 +10,21 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     void Awake()
     {
-        //do not restart music if instance exists
-        if(instance == null) {
-            instance = this;
-        } else {
-            Destroy(gameObject);
-            return;
+        if(SceneManager.GetActiveScene().name == "MaintenanceOil") {
+            
+            //do not restart music if instance exists
+            if(instance == null) {
+                instance = this;
+            } else {
+                Destroy(gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
-
         //assign attributes for each sound clip in array
-        foreach(Sound s in sounds) {
+        foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
