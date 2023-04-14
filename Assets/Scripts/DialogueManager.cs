@@ -1,10 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    AudioManager manager;
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     private int index;
@@ -14,6 +15,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        manager = FindObjectOfType<AudioManager>();
+        manager.Play("StoryBGM");
+
         StartCoroutine(Type());
     }
 
@@ -45,9 +49,18 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            textDisplay.text = "";
-            continueButton.SetActive(false);
+            //goes back to main menu if finished last story cutscene
+            if (SceneManager.GetActiveScene().name == "Cutscene4") {
+                MainMenu.isStoryMode = false;
+                SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
+            } 
+            
+            //else continue to next scene
+            else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                textDisplay.text = "";
+                continueButton.SetActive(false);
+            }
         }
     }
-    
 }

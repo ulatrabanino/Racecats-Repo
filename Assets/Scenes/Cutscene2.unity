@@ -284,7 +284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &320757949
 GameObject:
@@ -332,7 +332,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320757953
 MonoBehaviour:
@@ -458,7 +458,7 @@ RectTransform:
   m_Children:
   - {fileID: 755966903}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -557,7 +557,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &420413406
 GameObject:
@@ -751,6 +751,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420413406}
   m_CullTransparentMesh: 1
+--- !u!1001 &559024818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6505191726507838296, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838296, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
+    - target: {fileID: 6505191726507838296, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: sounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838296, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: StoryBGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838296, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838297, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505191726507838299, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfcb53da4bf82e745b001f834f196d58, type: 3}
 --- !u!1 &755966902
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +854,7 @@ RectTransform:
   m_GameObject: {fileID: 755966902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 226254215}
@@ -806,7 +883,7 @@ MonoBehaviour:
   - You did great in that race!
   - Looks like your car got quite the beatdown though.
   - Try getting some maintenance done to fix it up!
-  typingSpeed: 0.06
+  typingSpeed: 0.01
   continueButton: {fileID: 420413406}
 --- !u!1 &899772867
 GameObject:
@@ -1025,7 +1102,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871018723
 GameObject:

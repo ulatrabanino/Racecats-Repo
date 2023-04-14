@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
 
@@ -15,6 +16,7 @@ public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
     public Sprite carHoodFunnelOil;
 
     public GameObject capInventorySlot;
+    public GameObject continueButton;
 
     // Start is called before the first frame update
     void Start() {
@@ -67,6 +69,7 @@ public class MaintenanceHood : MonoBehaviour, IPointerDownHandler {
                         gameObject.GetComponent<UnityEngine.UI.Image>().sprite = carHood;
 
                         manager.Play("MaintenanceCompleteSFX");
+                        continueButton.SetActive(true);
                     }
                     else {
                         return false;
