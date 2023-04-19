@@ -77,7 +77,7 @@ public class playerMovement : MonoBehaviour
 
         //Calculate forces
         Vector3 velocityChange = (targetVelocity-currentVelocity);
-        velocityChange = new Vector3(velocityChange.normalized.x,0,velocityChange.normalized.z); //fixes falling so u can fall 
+        velocityChange = new Vector3(velocityChange.x,0,velocityChange.z); //fixes falling so u can fall 
 
         //limit force
         Vector3.ClampMagnitude(velocityChange, maxForce);
