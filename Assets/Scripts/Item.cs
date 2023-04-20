@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Scriptable object/Item")]
+public class Item : ScriptableObject { 
+    public ItemType type;
+
+    [Header("ImageSprite")]
+    public Sprite image;
+
+    //identifies what each item is
+    public enum ItemType {
+        Cap,    
+        CarJack,
+        Filter,
+        Funnel,
+        Hubcap,
+        Oil,
+        Plug,
+        Tire,
+        WoodBlock
+    }
+}

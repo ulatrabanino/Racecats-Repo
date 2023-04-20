@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -33,7 +34,6 @@ public class playerMovement : MonoBehaviour
     
     }
 
-    
     public void OnLook(InputAction.CallbackContext context)
 
     {
@@ -41,36 +41,36 @@ public class playerMovement : MonoBehaviour
     
     }
 
-  
-
-
     private void FixedUpdate()
     {
         Move();
      
     }
 
-   
-
     void Move()
     {
         
         Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.x,rb.velocity.y, move.y);
+        Vector3 targetVelocity = new Vector3(move.normalized.x*smoothSpeed,rb.velocity.y, move.normalized.y*smoothSpeed);
 
 
         if(targetVelocity.magnitude >0){
-    
-            if(Input.GetKey(KeyCode.Space))
-            {
-                //shift key pressed = boostspeed for increase
-                targetVelocity*=boostspeed;
-            }
-            else
-            {   //otherwise normal speed incerase when holding w 
-                targetVelocity *= speed;
-            }       
+            smoothSpeed = Mathf.Lerp(smoothSpeed,boostspeed,Time.deltaTime);
+
+        }else
+        {
+            smoothSpeed = Mathf.Lerp(smoothSpeed,0,Time.deltaTime);
         }
+        //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
+        if(Input.GetKey(KeyCode.Space))
+        {
+            //shift key pressed = boostspeed for increase
+            targetVelocity*=boostspeed;
+        }
+        else
+        {   //otherwise normal speed incerase when holding w 
+            targetVelocity *= speed;
+        }       
 
         //align direction
         targetVelocity = transform.TransformDirection(targetVelocity);
@@ -82,11 +82,9 @@ public class playerMovement : MonoBehaviour
         //limit force
         Vector3.ClampMagnitude(velocityChange, maxForce);
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
-        
 
     }
 
-  
     void Look()
     {
         //turn camera rotation
@@ -106,6 +104,10 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         manager = FindObjectOfType<AudioManager>();
         manager.Play("RacetrackBGM");
+
+        if(SceneManager.GetActiveScene().name == "Racetrack 1") {
+            manager.Play("DesertWindSFX");
+        }
     }
 
     // Update is called once per frame
