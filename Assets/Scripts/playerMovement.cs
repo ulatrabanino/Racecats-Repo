@@ -51,16 +51,10 @@ public class playerMovement : MonoBehaviour
     {
         
         Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.normalized.x*smoothSpeed,rb.velocity.y, move.normalized.y*smoothSpeed);
+        Vector3 targetVelocity = new Vector3(move.x,rb.velocity.y, move.y);
 
 
-        if(targetVelocity.magnitude >0){
-            smoothSpeed = Mathf.Lerp(smoothSpeed,boostspeed,Time.deltaTime);
-
-        }else
-        {
-            smoothSpeed = Mathf.Lerp(smoothSpeed,0,Time.deltaTime);
-        }
+    
         //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
         if(Input.GetKey(KeyCode.Space))
         {
@@ -77,7 +71,7 @@ public class playerMovement : MonoBehaviour
 
         //Calculate forces
         Vector3 velocityChange = (targetVelocity-currentVelocity);
-        velocityChange = new Vector3(velocityChange.normalized.x,0,velocityChange.normalized.z); //fixes falling so u can fall 
+        velocityChange = new Vector3(velocityChange.x,0,velocityChange.z); //fixes falling so u can fall 
 
         //limit force
         Vector3.ClampMagnitude(velocityChange, maxForce);
