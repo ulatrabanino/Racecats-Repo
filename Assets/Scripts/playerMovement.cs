@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -33,7 +34,6 @@ public class playerMovement : MonoBehaviour
     
     }
 
-    
     public void OnLook(InputAction.CallbackContext context)
 
     {
@@ -41,16 +41,11 @@ public class playerMovement : MonoBehaviour
     
     }
 
-  
-
-
     private void FixedUpdate()
     {
         Move();
      
     }
-
-   
 
     void Move()
     {
@@ -86,7 +81,6 @@ public class playerMovement : MonoBehaviour
 
     }
 
-  
     void Look()
     {
         //turn camera rotation
@@ -106,6 +100,10 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         manager = FindObjectOfType<AudioManager>();
         manager.Play("RacetrackBGM");
+
+        if(SceneManager.GetActiveScene().name == "Racetrack 1") {
+            manager.Play("DesertWindSFX");
+        }
     }
 
     // Update is called once per frame

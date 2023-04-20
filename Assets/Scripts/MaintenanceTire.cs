@@ -10,6 +10,7 @@ public class MaintenanceTire : MonoBehaviour
     public GameObject tire;
     public GameObject woodBlock;
     public GameObject carJack;
+    public GameObject continueButton;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,7 @@ public class MaintenanceTire : MonoBehaviour
                         tire.GetComponent<Tire>().AttachHubcap();
 
                         manager.Play("MaintenanceCompleteSFX");
+                        continueButton.SetActive(true);
                     } else {
                         return false;
                     }

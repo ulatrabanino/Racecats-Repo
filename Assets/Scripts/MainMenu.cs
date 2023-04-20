@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +5,9 @@ public class MainMenu : MonoBehaviour
 {
     //tracks music
     AudioManager manager;
+
+    public static bool isStoryMode = false;
+
     void Start() {
         manager = FindObjectOfType<AudioManager>();
         manager.Play("MainMenuBGM");
@@ -16,7 +17,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayGame() {
-        SceneManager.LoadSceneAsync("Racetrack", LoadSceneMode.Single);
+        isStoryMode = true;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void PlayMenuSFX() {

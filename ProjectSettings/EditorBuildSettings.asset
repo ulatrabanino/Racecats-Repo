@@ -5,13 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: 7fae893e17f08684bbacb48f37b9e828
+    guid: 08599f7edd7f147429f92021bed17549
+  - enabled: 1
+    path: Assets/Scenes/Cutscene1.unity
+    guid: d5b8ffca6e4ec3f42aecbd7ff7d7aae3
   - enabled: 1
     path: Assets/Scenes/Racetrack.unity
     guid: 272ad09f1aa63414daf9f821bd6a7896
   - enabled: 1
+    path: Assets/Scenes/Cutscene2.unity
+    guid: 756d69c9852733d419806eb64c37897e
+  - enabled: 1
+    path: Assets/Scenes/MaintenanceTire.unity
+    guid: 4781a3b4ff3570441a788359a1557c14
+  - enabled: 1
+    path: Assets/Scenes/MaintenanceOil.unity
+    guid: f1391fff1831d3c4faf64e1a9f75eb81
+  - enabled: 1
+    path: Assets/Scenes/Cutscene3.unity
+    guid: f6acef2ef2a069b4580db0a9b7fb27f4
+  - enabled: 1
     path: Assets/Scenes/Racetrack 1.unity
     guid: fc1731c83fe866144bd4ed983d51102d
+  - enabled: 1
+    path: Assets/Scenes/Cutscene4.unity
+    guid: ec48aa34d922f0948b0c7c24a09c1e1d
   m_configObjects: {}
