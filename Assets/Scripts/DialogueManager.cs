@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     private int index;
     public float typingSpeed;
 
+    public bool notMaintenance = true;
+
     public GameObject continueButton;
 
     private void Start()
@@ -23,9 +25,16 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (textDisplay.text == sentences[index])
-        {
-            continueButton.SetActive(true);
+        if (notMaintenance) {
+            if (textDisplay.text == sentences[index])
+            {
+                continueButton.SetActive(true);
+            }
+        } else {
+            if ((textDisplay.text == sentences[index]) && (index != sentences.Length - 1))
+            {
+                continueButton.SetActive(true);
+            }
         }
     }
 
