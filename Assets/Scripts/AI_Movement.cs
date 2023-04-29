@@ -5,40 +5,34 @@ using UnityEngine.AI;
 
 public class AI_Movement : MonoBehaviour
 {
-  
-   
-   //list of waypoint objects
-    public List<GameObject> waypoints;
-    //speed that can be changed in unity 
-    public float speed  = 3f;
-    //index for waypoint counter
-    int index = 0; 
+    [SerializeField] private Waypoints waypoints;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private float movementSpeed= 10f;
+    [SerializeField] private float distanceThreshold= .1f;
+
+    private Transform currentWaypoint;
+
+    void Start()
     {
-    
-      //gets destination from waypoint index
-      Vector3 destination = waypoints[index].transform.position;
+      //set initial position to first waypoint
+      currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+      transform.position = currentWaypoint.position;
 
-      //creates a new vector3 using movetowards function to transform posiiton of current waypoint object is at to the next waypoint
-      Vector3 newPos = Vector3.MoveTowards(transform.position,destination, speed*Time.deltaTime);
-      transform.position = newPos;
-
-      //gets the distance between the position its at and the destinatino which it is going to go to
-      float distance = Vector3.Distance(transform.position,destination);
-
-      //checks for distance between waypoints
-      if(distance <=0.05)
-      {
-        //stops if theres no more waypoints in the index
-        if(index<waypoints.Count-1)
-        {
-          index++;
-        }
-
+      //set next waypoint target
+      currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
     }
 
-  
-}
+
+    void Update()
+    { 
+      //moves the 
+      transform.position = Vector3.MoveTowards(transform.position,currentWaypoint.position,movementSpeed*Time.deltaTime);
+
+      if(Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
+      {
+        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+      }
+    }
+
+   
 }
