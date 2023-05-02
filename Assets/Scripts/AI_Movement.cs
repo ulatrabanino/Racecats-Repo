@@ -7,10 +7,20 @@ public class AI_Movement : MonoBehaviour
 {
     [SerializeField] private Waypoints waypoints;
 
+
+    [Range(0f,15)] //How fast Ai will rotate once it reaches its waypoint 
     [SerializeField] private float movementSpeed= 10f;
+
+    [SerializeField] private float rotateSpeed =4f;
     [SerializeField] private float distanceThreshold= .1f;
 
     private Transform currentWaypoint;
+
+    //the rotation target for the current frame
+    private Quaternion rotationGoal; //end goal rotation we want to get to 
+
+    //the direction to next waypoint that  ai needs to rotate towards
+    private Vector3 directionToWaypoint;
 
     void Start()
     {
@@ -20,6 +30,7 @@ public class AI_Movement : MonoBehaviour
 
       //set next waypoint target
       currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+      transform.LookAt(currentWaypoint);
     }
 
 
@@ -31,8 +42,25 @@ public class AI_Movement : MonoBehaviour
       if(Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
       {
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+
       }
+      //called everyframe
+      RotateTowardsWaypoint();
     }
 
+
+  //Will slowly rotate A.I. towards the current waypoint it is moving towards
+
+  private void RotateTowardsWaypoint()
+  {
+
+    directionToWaypoint = (currentWaypoint.position - transform.position).normalized;
+
+    rotationGoal = Quaternion.LookRotation(directionToWaypoint);
+
+  //slerp does a full rotation spherically
+    transform.rotation = Quaternion.Slerp(transform.rotation,rotationGoal,rotateSpeed*Time.deltaTime);
+
+  }
    
 }
