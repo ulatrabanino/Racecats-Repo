@@ -22,45 +22,60 @@ public class AI_Movement : MonoBehaviour
     //the direction to next waypoint that  ai needs to rotate towards
     private Vector3 directionToWaypoint;
 
+    //holds variant speeds of enemy racer
+    private float[] speedArray;
+
     void Start()
     {
-      //set initial position to first waypoint
-      currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
-      transform.position = currentWaypoint.position;
+        //set initial position to first waypoint
+        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        transform.position = currentWaypoint.position;
 
-      //set next waypoint target
-      currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
-      transform.LookAt(currentWaypoint);
+        //set next waypoint target
+        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        transform.LookAt(currentWaypoint);
+
+        speedArray = new[] { 10f, 15f,20f, 25f, 30f };
+
+        //changes enemy racer speed every second
+        InvokeRepeating("ChangeSpeed", 0.0f, 1.0f);
     }
 
 
     void Update()
     { 
-      //moves the 
-      transform.position = Vector3.MoveTowards(transform.position,currentWaypoint.position,movementSpeed*Time.deltaTime);
+        //moves the 
+        transform.position = Vector3.MoveTowards(transform.position,currentWaypoint.position,movementSpeed*Time.deltaTime);
 
-      if(Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
-      {
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        if(Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
+        {
+            currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
 
-      }
-      //called everyframe
-      RotateTowardsWaypoint();
+        }
+        //called everyframe
+        RotateTowardsWaypoint();
     }
 
 
-  //Will slowly rotate A.I. towards the current waypoint it is moving towards
+    //Will slowly rotate A.I. towards the current waypoint it is moving towards
 
-  private void RotateTowardsWaypoint()
-  {
+    private void RotateTowardsWaypoint()
+    {
 
-    directionToWaypoint = (currentWaypoint.position - transform.position).normalized;
+        directionToWaypoint = (currentWaypoint.position - transform.position).normalized;
 
-    rotationGoal = Quaternion.LookRotation(directionToWaypoint);
+        rotationGoal = Quaternion.LookRotation(directionToWaypoint);
 
-  //slerp does a full rotation spherically
-    transform.rotation = Quaternion.Slerp(transform.rotation,rotationGoal,rotateSpeed*Time.deltaTime);
+    //slerp does a full rotation spherically
+        transform.rotation = Quaternion.Slerp(transform.rotation,rotationGoal,rotateSpeed*Time.deltaTime);
 
-  }
-   
+    }
+
+    //changes movementSpeed to random speed in speedArray
+    private void ChangeSpeed() {
+        System.Random rand = new System.Random();
+        int randomIndex = rand.Next(0, speedArray.Length);
+        float randomSpeed = speedArray[randomIndex];
+        movementSpeed = randomSpeed;
+    }
 }

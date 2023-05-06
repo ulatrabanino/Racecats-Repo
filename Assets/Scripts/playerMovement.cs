@@ -54,10 +54,10 @@ public class playerMovement : MonoBehaviour
         Vector3 targetVelocity = new Vector3(move.x,rb.velocity.y, move.y);
 
 
-        //checks if leftshift key is held then speed boost is applied otherwise normal movement speed is applied
+        //checks if spacebar is held then speed boost is applied, otherwise normal movement speed is applied
         if(Input.GetKey(KeyCode.Space))
         {
-            //shift key pressed = boostspeed for increase
+            //spacebar pressed = boostspeed for increase
             targetVelocity*=boostspeed;
         }
         else
