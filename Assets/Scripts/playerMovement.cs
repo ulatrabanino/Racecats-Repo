@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,11 +8,9 @@ public class playerMovement : MonoBehaviour
     public Rigidbody rb;
     public GameObject camHolder;
     public float speed, sensitivity, maxForce, boostspeed;
-    private Vector2 move,look,move2;
+    private Vector2 move,look;
     private float lookRotation;
-
-    //used to smooth the speed transition of object
-    private float smoothSpeed;  
+ 
     public bool grounded;
 
     //min values and max for rotating camera
@@ -26,42 +21,30 @@ public class playerMovement : MonoBehaviour
     public Sprite catCarLeftSprite;
     public Sprite catCarRightSprite;
     private int catCarSpriteValue = 0;
-    public void OnMove(InputAction.CallbackContext context)
-
-    {
-        move =context.ReadValue<Vector2>();
+    public void OnMove(InputAction.CallbackContext context) {
+        move = context.ReadValue<Vector2>();
         //manager.Play("CarDrive");
-    
     }
 
-    public void OnLook(InputAction.CallbackContext context)
-
-    {
+    public void OnLook(InputAction.CallbackContext context) {
         look =context.ReadValue<Vector2>();
-    
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         Move();
-     
     }
 
-    void Move()
-    {
+    void Move() {
         
         Vector3 currentVelocity = rb.velocity;
         Vector3 targetVelocity = new Vector3(move.x,rb.velocity.y, move.y);
 
-
         //checks if spacebar is held then speed boost is applied, otherwise normal movement speed is applied
-        if(Input.GetKey(KeyCode.Space))
-        {
+        if(Input.GetKey(KeyCode.Space)) {
             //spacebar pressed = boostspeed for increase
             targetVelocity*=boostspeed;
         }
-        else
-        {   //otherwise normal speed incerase when holding w 
+        else {   //otherwise normal speed incerase when holding w 
             targetVelocity *= speed;
         }       
 
@@ -75,11 +58,10 @@ public class playerMovement : MonoBehaviour
         //limit force
         Vector3.ClampMagnitude(velocityChange, maxForce);
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
-
     }
 
-    void Look()
-    {
+    void Look() {
+
         //turn camera rotation
         transform.Rotate(Vector3.up*look.x * sensitivity);
         //look around
@@ -89,8 +71,7 @@ public class playerMovement : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -104,8 +85,8 @@ public class playerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
-    {
+    void LateUpdate() {
+
         Look();
 
         //changes car sprite if turning
@@ -127,8 +108,7 @@ public class playerMovement : MonoBehaviour
     }
 
     //checks to see if your on the ground 
-    public void SetGrounded(bool state)
-    {
+    public void SetGrounded(bool state) {
         grounded = state;
     }
 }

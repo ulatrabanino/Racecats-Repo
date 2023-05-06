@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class AI_Movement : MonoBehaviour
 {
@@ -19,14 +16,13 @@ public class AI_Movement : MonoBehaviour
     //the rotation target for the current frame
     private Quaternion rotationGoal; //end goal rotation we want to get to 
 
-    //the direction to next waypoint that  ai needs to rotate towards
+    //the direction to next waypoint that ai needs to rotate towards
     private Vector3 directionToWaypoint;
 
     //holds variant speeds of enemy racer
     private float[] speedArray;
 
-    void Start()
-    {
+    void Start() {
         //set initial position to first waypoint
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
         transform.position = currentWaypoint.position;
@@ -35,15 +31,14 @@ public class AI_Movement : MonoBehaviour
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
         transform.LookAt(currentWaypoint);
 
-        speedArray = new[] { 10f, 15f,20f, 25f, 30f };
+        speedArray = new[] { 10f, 15f, 20f};
 
         //changes enemy racer speed every second
         InvokeRepeating("ChangeSpeed", 0.0f, 1.0f);
     }
 
 
-    void Update()
-    { 
+    void Update() { 
         //moves the 
         transform.position = Vector3.MoveTowards(transform.position,currentWaypoint.position,movementSpeed*Time.deltaTime);
 
@@ -59,8 +54,7 @@ public class AI_Movement : MonoBehaviour
 
     //Will slowly rotate A.I. towards the current waypoint it is moving towards
 
-    private void RotateTowardsWaypoint()
-    {
+    private void RotateTowardsWaypoint() {
 
         directionToWaypoint = (currentWaypoint.position - transform.position).normalized;
 
