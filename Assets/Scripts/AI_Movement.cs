@@ -31,10 +31,10 @@ public class AI_Movement : MonoBehaviour
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
         transform.LookAt(currentWaypoint);
 
-        speedArray = new[] { 10f, 15f, 20f};
+        speedArray = new[] { 5f, 10f, 15f, 20f, 25f, 30f};
 
         //changes enemy racer speed every second
-        InvokeRepeating("ChangeSpeed", 0.0f, 1.0f);
+        InvokeRepeating("ChangeSpeed", 0.0f, 2.0f);
     }
 
 

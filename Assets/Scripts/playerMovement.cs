@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
     AudioManager manager;
     public Rigidbody rb;
     public GameObject camHolder;
-    public float speed, sensitivity, maxForce, boostspeed;
+    public float speed, sensitivity, maxForce, boostspeed, boostEnergy;
     private Vector2 move,look;
     private float lookRotation;
  
@@ -41,10 +41,24 @@ public class playerMovement : MonoBehaviour
 
         //checks if spacebar is held then speed boost is applied, otherwise normal movement speed is applied
         if(Input.GetKey(KeyCode.Space)) {
-            //spacebar pressed = boostspeed for increase
-            targetVelocity*=boostspeed;
+
+            
+            boostEnergy = gameObject.GetComponent<BoostEnergy>().energy;
+
+            //spacebar pressed = boostspeed for increase if enough energy is left
+            if (boostEnergy > 0) {
+                targetVelocity *= boostspeed;
+            } 
+            
+            //normal speed if no energy left
+            else {
+                targetVelocity *= speed;
+            }
+             
         }
-        else {   //otherwise normal speed incerase when holding w 
+
+        //otherwise normal speed increase when holding w 
+        else {   
             targetVelocity *= speed;
         }       
 
