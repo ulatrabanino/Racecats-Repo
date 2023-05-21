@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6694,6 +6694,7 @@ GameObject:
   - component: {fileID: 528477644}
   - component: {fileID: 528477645}
   - component: {fileID: 528477646}
+  - component: {fileID: 528477647}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -6862,10 +6863,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 528477642}
   camHolder: {fileID: 2129084337}
-  speed: 10
+  speed: 50
   sensitivity: 0.1
   maxForce: 2
-  boostspeed: 30
+  boostspeed: 80
   boostEnergy: 0
   grounded: 0
   minValue: {x: 20, y: 10, z: -60}
@@ -6953,6 +6954,27 @@ MonoBehaviour:
   energy: 30
   energyBar: {fileID: 1996527465}
   dvalue: 5
+  ivalue: 8
+--- !u!114 &528477647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528477636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68f39d0ba0db0a42a45faa1d77d6610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 528477642}
+  speed: 10
+  boostspeed: 30
+  maxForce: 2
+  sensitivity: 0.1
+  camHolder: {fileID: 2129084337}
+  minValue: {x: 20, y: 10, z: -60}
+  maxValue: {x: 30, y: 30, z: 60}
 --- !u!1001 &528562444
 PrefabInstance:
   m_ObjectHideFlags: 0

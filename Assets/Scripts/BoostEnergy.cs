@@ -8,6 +8,7 @@ public class BoostEnergy : MonoBehaviour
 
     public Slider energyBar;
     public float dvalue;
+    public float ivalue;
 
     // Start is called before the first frame update
     void Start() {
@@ -19,7 +20,7 @@ public class BoostEnergy : MonoBehaviour
     void Update() {
 
         //updates energy bar based on input and energy remaining
-        if(Input.GetKey(KeyCode.Space)) {
+        if(Input.GetKey(KeyCode.Space) || GamepadController.boosting) {
             DecreaseEnergy();
         } else if(energy != maxEnergy) {
             IncreaseEnergy();
@@ -29,7 +30,7 @@ public class BoostEnergy : MonoBehaviour
     }
 
     //decreases energy
-    private void DecreaseEnergy() {
+    public void DecreaseEnergy() {
         if (energy != 0) {
             energy -= dvalue * Time.deltaTime;
         }
@@ -40,8 +41,8 @@ public class BoostEnergy : MonoBehaviour
     }
 
     //increases energy
-    private void IncreaseEnergy() {
-        energy += dvalue * Time.deltaTime;
+    public void IncreaseEnergy() {
+        energy += ivalue * Time.deltaTime;
         if (energy >= maxEnergy) {
             energy = maxEnergy;
         }

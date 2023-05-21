@@ -41,20 +41,16 @@ public class playerMovement : MonoBehaviour
 
         //checks if spacebar is held then speed boost is applied, otherwise normal movement speed is applied
         if(Input.GetKey(KeyCode.Space)) {
-
-            
             boostEnergy = gameObject.GetComponent<BoostEnergy>().energy;
 
             //spacebar pressed = boostspeed for increase if enough energy is left
             if (boostEnergy > 0) {
                 targetVelocity *= boostspeed;
-            } 
-            
+            }
             //normal speed if no energy left
             else {
                 targetVelocity *= speed;
             }
-             
         }
 
         //otherwise normal speed increase when holding w 
